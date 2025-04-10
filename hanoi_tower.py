@@ -18,26 +18,26 @@ def hanoi(
     """
     if n == 1:
         disk = towers[source].pop()
-        print(f"popping {disk}")
         towers[target].append(disk)
         print(
-            f"{Fore.BLUE}Move disk {disk} from {Fore.GREEN}{source} {Fore.BLUE}to {Fore.GREEN}{target}"
+            f"{Fore.RED}1 {Fore.BLUE}Move disk {disk} from {Fore.GREEN}{source} {Fore.BLUE}to {Fore.GREEN}{target}"
         )
         print(f"Intermediate state: {towers}\n")
         return
 
-    # move n-1 disks to auxiliary
+    # step 1
     hanoi(n - 1, source=source, target=auxiliary, auxiliary=target, towers=towers)
 
+    # step 2
     disk = towers[source].pop()
     towers[target].append(disk)
 
     print(
-        f"{Fore.BLUE}Moving disk {disk} from {Fore.GREEN}{source} {Fore.BLUE}to {Fore.GREEN}{target}"
+        f"{Fore.RED}2 {Fore.BLUE}Moving disk {disk} from {Fore.GREEN}{source} {Fore.BLUE}to {Fore.GREEN}{target}"
     )
     print(f"Intermediate state: {towers}\n")
 
-    # move n-1 disks from auxiliary to target
+    # step 3
     hanoi(n - 1, source=auxiliary, target=target, auxiliary=source, towers=towers)
 
 
@@ -54,4 +54,4 @@ def solve_hanoi(disks_quantity: int):
     print(f"{Fore.YELLOW}Final state: {towers}{Fore.RESET}")
 
 
-solve_hanoi(6)
+solve_hanoi(3)

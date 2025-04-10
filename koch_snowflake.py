@@ -63,4 +63,18 @@ def draw_koch_curve(order, size=300):
     window.mainloop()
 
 
-draw_koch_curve(4)
+if __name__ == "__main__":
+    while True:
+        resp = input(
+            "Please select an order of recursion (only integers), or 'q' to exit: "
+        )
+        if resp == "q":
+            print("\nExiting...\n")
+            break
+
+        try:
+            order = int(resp)
+            draw_koch_curve(order)
+            break
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.\n")
